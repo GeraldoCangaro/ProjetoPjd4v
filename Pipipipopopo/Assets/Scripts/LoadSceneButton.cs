@@ -8,6 +8,6 @@ public class LoadSceneButton : MonoBehaviour
 
    public void LoadScene()
    {
-      GameManager.Instance.LoadScene(SceneName);
+      GameManager.Instance.LoadLevel(SceneName);
    }
 }

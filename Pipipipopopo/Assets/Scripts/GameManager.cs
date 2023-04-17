@@ -30,6 +30,12 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void LoadLevel(string levelname)
+    {
+        SceneManager.LoadScene(levelname);
+        SceneManager.LoadScene("GUI", LoadSceneMode.Additive);
+    }
             
     
 }

@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveInput;
     private bool _isShooting;
 
+    private int _points;
+    private int _currentEnergy;
+    //SeriaLizeField te deixa editar uma variável privada do Unity;
+    [SerializeField] private int MaxEnergy;
+
     //toda vez que o objeto é habilitado.
     private void OnEnable()
     {
@@ -19,7 +24,7 @@ public class PlayerController : MonoBehaviour
     // toda vez que o objeto é desabilitado.
     private void OnDisable()
     {
-        //onactionTriggered = quando a ação estiver acontececndo. (neste caso, negativo.)
+        //onActionTriggered = quando a ação estiver acontececndo. (neste caso, negativo.)
         _playerInput.onActionTriggered -= OnAction;
     }
 
@@ -33,6 +38,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Keyboard.current.jKey.wasPressedThisFrame)
+        {
+            AddPoints( 100);
+        }
+        if (Keyboard.current.kKey.wasPressedThisFrame)
+        {
+            AddPoints( -100);
+        }
+        if (Keyboard.current.nKey.wasPressedThisFrame)
+        {
+            AddEnergy( 100);
+        }
+        if (Keyboard.current.mKey.wasPressedThisFrame)
+        {
+            AddEnergy( -100);
+        }
         
     }
     
@@ -64,5 +85,25 @@ public class PlayerController : MonoBehaviour
             _moveInput = PlayerAct.ReadValue<Vector2>();
         }
     }
+
+    private void Move()
+    {
+        
+    }
+
+    private void AddPoints(int amount)
+    {
+        //Clamp seria tipo, cortar as pontas, amount é um parâmetro.
+        _points = Mathf.Clamp(_points + amount, 0, int.MaxValue);
+        PlayerOBserver.PointsChanged(_points);
+    }
     
+
+    private void AddEnergy(int amount)
+    {
+        //if (_currentEnergy > MaxEnergy)  _currentEnergy = MaxEnergy;
+        //if (_currentEnergy <= 0)  _currentEnergy = 0;
+        _currentEnergy = Mathf.Clamp(_currentEnergy + amount, 0, MaxEnergy);
+        PlayerOBserver.EnergyChanged(_currentEnergy);
+    }
 }
