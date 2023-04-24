@@ -152,6 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fba75df6935d954394c09036476d73f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyControllerPrefab: {fileID: 5367228080124969531, guid: 941f819fdbfb8b84ba5dfb5369ddb40d, type: 3}
+  enemyTypes:
+  - {fileID: 11400000, guid: d48bc18e454b85445a484fe555662c3f, type: 2}
+  - {fileID: 11400000, guid: 6805f100806cd834685a893af967a6a6, type: 2}
+  - {fileID: 11400000, guid: 1d390bd63de2fec4e8adbcdc6724012c, type: 2}
 --- !u!4 &643462120
 Transform:
   m_ObjectHideFlags: 0
